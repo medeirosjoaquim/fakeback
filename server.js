@@ -14,15 +14,7 @@ app.all('*', function(req, res, next) {
   next();
 });
 
-  app.configure(function () {
-    app.use(cors());
-    app.use(express.bodyParser());
-    app.use(express.methodOverride());
-    app.use(app.router);
-    app.use(allowCrossDomain);
-    app.use(express.static(path.join(application_root, "public")));
-    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-  });
+app.use(cors());
 app.get('/hotels', function(req, res) {
   if (req.query.q) {
     fs.readFile('./db.json', (err, json) => {
